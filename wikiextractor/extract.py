@@ -272,7 +272,7 @@ def compact(text, mark_headers=False):
         elif (line[0] == '(' and line[-1] == ')') or line.strip('.-') == '':
             continue
         elif len(headers):
-            if Extractor.keepSections:
+            if Extractor.keep_sections:
                 items = sorted(headers.items())
                 for (i, v) in items:
                     page.append(v)

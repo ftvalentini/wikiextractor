@@ -556,6 +556,8 @@ def main():
                         help="preserve links")
     groupP.add_argument("-ns", "--namespaces", default="", metavar="ns1,ns2",
                         help="accepted namespaces")
+    groupP.add_argument("-s", "--sections", action="store_true",
+                        help="preserve section names")
     groupP.add_argument("--templates",
                         help="use or create file containing templates")
     groupP.add_argument("--no-templates", action="store_true",
@@ -584,6 +586,7 @@ def main():
     if args.html:
         Extractor.keepLinks = True
     Extractor.to_json = args.json
+    Extractor.keep_sections = args.sections
 
     try:
         power = 'kmg'.find(args.bytes[-1].lower()) + 1

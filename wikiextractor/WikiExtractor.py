@@ -324,7 +324,8 @@ def collect_pages(text):
             page.append(line)
         elif tag == '/page':
             colon = title.find(':')
-            if (colon < 0 or (title[:colon] in acceptedNamespaces) and id != last_id and
+            if (colon < 0 or title[:colon] not in knownNamespaces or 
+                    (title[:colon] in acceptedNamespaces) and id != last_id and
                     not redirect and not title.startswith(templateNamespace)):
                 yield (id, revid, title, page)
                 last_id = id
@@ -530,6 +531,7 @@ minFileSize = 200 * 1024
 
 
 def main():
+
     global acceptedNamespaces
     global templateCache
 
